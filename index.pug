@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(href="styles/styles.css" type="text/css" rel="stylesheet")
+    title Test Less & Pug
+  body
+    header
+    main
+      section
+        - var n = 0;
+        while ++n <= 2
+          article.container(class="container" + n)
+            section.container__children(class="container"+ n + "__children children" + n + "-more")
+              span.text TEST AGAIN
+      section
+        - colors = [[cyan, orange], [violet, jaune]]
+        - degres = [0, 90, 180, 270]
+        each duo in colors
+          each index, degre in degres
+            - i = 0;
+            while ++i <= 2
+            //- img(class="leaf-" + index, src="media/leaf.svg")
+            //- Reflechir au nom de la classe pour inverser le duo de couleur
+
+//- pour couleurs.length
+//-   pour ++i <= 4 (tour)
+//-     pour ++j <= 2 (couleur/couleur-bg)
+    footer

@@ -1,0 +1,65 @@
+@seablue: #428bca;
+@white: rgb(220, 255, 255);
+@colors: #38C9C0, #4D4DC9;
+@colors-comp: #C97D57, #C9AD2E;
+
+@font-size: 1.5rem;
+@line-height: 1em;
+
+
+
+html {
+  background-color: @seablue;
+}
+
+// MARK: MIXINS
+
+
+
+
+// Helpers
+
+.names-comp-color( @name ) {
+  replace( "@color-comp", "color", @name )
+}
+
+.bgc( @color ) {
+  background-color: @color;
+}
+
+.fs( @i ) {
+  font-size: @font-size * @i;
+}
+
+.container {
+  margin: 30px 0;
+
+  &, &__children { //& C'est this mais en l'utilisant que pour des noms pas des propriétés de ce que j'ai vu
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .create-container-and-children( @i: 1 ) when (@i <= 2) {
+    @height: (@i * 150px);
+
+    &@{i} { //& C'est this mais en l'utilisant que pour des noms pas des propriétés de ce que j'ai vu
+      //@{} c'est concaténation avec une variable
+      height: @height;
+      padding: calc(( @height - (@height/2))/2 ) 0;
+      .bgc(extract( @colors, @i ));
+      .fs( @i );
+
+      &__children {
+        @height_temp: calc( @height/2 );
+
+        height: @height_temp;
+        padding: calc(( @height_temp - @line-height)/2 ) 20px;
+        .bgc(extract( @colors-comp, @i ));
+      };
+    }
+    .create-container-and-children( @i + 1 );
+  }
+
+  .create-container-and-children();
+}
+

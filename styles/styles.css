@@ -1,0 +1,33 @@
+html {
+  background-color: #428bca;
+}
+.container {
+  margin: 30px 0;
+}
+.container,
+.container__children {
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.container1 {
+  height: 150px;
+  padding: calc((150px - (150px/2))/2) 0;
+  background-color: #38C9C0;
+  font-size: 1.5rem;
+}
+.container1__children {
+  height: calc(150px/2);
+  padding: calc((calc(150px/2) - 1em)/2) 20px;
+  background-color: #C97D57;
+}
+.container2 {
+  height: 300px;
+  padding: calc((300px - (300px/2))/2) 0;
+  background-color: #4D4DC9;
+  font-size: 3rem;
+}
+.container2__children {
+  height: calc(300px/2);
+  padding: calc((calc(300px/2) - 1em)/2) 20px;
+  background-color: #C9AD2E;
+}
