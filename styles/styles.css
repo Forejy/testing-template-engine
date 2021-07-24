@@ -1,33 +1,112 @@
+body {
+  margin: 0;
+}
 html {
   background-color: #428bca;
 }
 .container {
-  margin: 30px 0;
+  margin: 30px auto;
+  width: 40%;
 }
 .container,
 .container__children {
-  border-radius: 10px;
   box-sizing: border-box;
 }
+.container1,
+.container1__children {
+  border-radius: calc(1 * 15px);
+}
 .container1 {
-  height: 150px;
-  padding: calc((150px - (150px/2))/2) 0;
-  background-color: #38C9C0;
-  font-size: 1.5rem;
+  height: 100px;
+  padding: calc((100px - (100px/2))/2);
+  background: #38C9C0;
+  font-size: 1rem;
 }
 .container1__children {
-  height: calc(150px/2);
-  padding: calc((calc(150px/2) - 1em)/2) 20px;
-  background-color: #C97D57;
+  height: calc(100px/2);
+  padding: calc((calc(100px/2) - 1em)/2) 20px;
+  background: #C97D57;
+}
+.container2,
+.container2__children {
+  border-radius: calc(2 * 15px);
 }
 .container2 {
-  height: 300px;
-  padding: calc((300px - (300px/2))/2) 0;
-  background-color: #4D4DC9;
-  font-size: 3rem;
+  height: 200px;
+  padding: calc((200px - (200px/2))/2);
+  background: #4D4DC9;
+  font-size: 2rem;
 }
 .container2__children {
-  height: calc(300px/2);
-  padding: calc((calc(300px/2) - 1em)/2) 20px;
-  background-color: #C9AD2E;
+  height: calc(200px/2);
+  padding: calc((calc(200px/2) - 1em)/2) 20px;
+  background: #C9AD2E;
+}
+.tree-section {
+  margin: 0 auto;
+  width: min-content;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.tree-container {
+  padding: 10px 10px 0;
+  width: max-content;
+}
+.tree-container-top-bottom {
+  border-radius: 10px;
+}
+.tree {
+  width: 50px;
+  height: 50px;
+}
+.tree-colors11 {
+  background: #C97D57;
+}
+.tree-colors12 {
+  background: #38C9C0;
+}
+.tree-colors21 {
+  background: #C9AD2E;
+}
+.tree-colors22 {
+  background: #4D4DC9;
+}
+.rotate-0 {
+  transform: rotateZ(0deg);
+}
+.rotate-45 {
+  transform: rotateZ(45deg);
+}
+.rotate-90 {
+  transform: rotateZ(90deg);
+}
+.rotate-135 {
+  transform: rotateZ(135deg);
+}
+.rotate-180 {
+  transform: rotateZ(180deg);
+}
+.rotate-225 {
+  transform: rotateZ(225deg);
+}
+.rotate-270 {
+  transform: rotateZ(270deg);
+}
+.rotate-315 {
+  transform: rotateZ(315deg);
+}
+.tree-splitter {
+  height: 25px;
+}
+.tree-splitter11 {
+  background: linear-gradient(#C97D57, #38C9C0);
+}
+.tree-splitter12 {
+  background: linear-gradient(#38C9C0, #C9AD2E);
+}
+.tree-splitter21 {
+  background: linear-gradient(#C9AD2E, #4D4DC9);
+}
+.pb-5 {
+  padding-bottom: 5px;
 }

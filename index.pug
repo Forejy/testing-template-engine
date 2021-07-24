@@ -14,17 +14,22 @@ html(lang="en")
           article.container(class="container" + n)
             section.container__children(class="container"+ n + "__children children" + n + "-more")
               span.text TEST AGAIN
-      section
+      section.tree-section
         - colors = [[cyan, orange], [violet, jaune]]
-        - degres = [0, 90, 180, 270]
-        each duo in colors
-          each index, degre in degres
-            - i = 0;
-            while ++i <= 2
-            //- img(class="leaf-" + index, src="media/leaf.svg")
-            //- Reflechir au nom de la classe pour inverser le duo de couleur
+        - duo_count = 2
+        - j = 0
 
-//- pour couleurs.length
-//-   pour ++i <= 4 (tour)
-//-     pour ++j <= 2 (couleur/couleur-bg)
-    footer
+        while ++j <= duo_count
+          - k = 0
+          while ++k <= duo_count
+            - var index = -1
+            div
+              div(class="tree-container tree-colors" + j + k)(class=(j == 2 && k == 2) ? "pb-5" : null  )
+                while ++index <= 7
+                  - var angle = (360/8) * index;
+                    img(class="tree" + " rotate-" + angle, src="media/tree"+ j + k + ".svg")
+              if !(j == 2 && k == 2)
+                div.tree-splitter(class="tree-splitter" + j + k)
+              else
+
+

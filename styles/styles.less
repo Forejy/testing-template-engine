@@ -1,9 +1,17 @@
+
+// MARK: Reset
+body {
+  margin: 0;
+}
+
 @seablue: #428bca;
 @white: rgb(220, 255, 255);
 @colors: #38C9C0, #4D4DC9;
 @colors-comp: #C97D57, #C9AD2E;
 
-@font-size: 1.5rem;
+
+
+@font-size: 1rem;
 @line-height: 1em;
 
 
@@ -24,7 +32,15 @@ html {
 }
 
 .bgc( @color ) {
-  background-color: @color;
+  background: @color;
+}
+
+.bgc( @color1, @color2 ) {
+  background: linear-gradient(@color1, @color2);
+}
+
+.c( @color ){
+  color: @color;
 }
 
 .fs( @i ) {
@@ -32,20 +48,24 @@ html {
 }
 
 .container {
-  margin: 30px 0;
+  margin: 30px auto;
+  width: 40%;
 
   &, &__children { //& C'est this mais en l'utilisant que pour des noms pas des propriétés de ce que j'ai vu
-    border-radius: 10px;
     box-sizing: border-box;
   }
 
   .create-container-and-children( @i: 1 ) when (@i <= 2) {
-    @height: (@i * 150px);
+    @height: (@i * 100px);
+
+    &@{i}, &@{i}__children {
+      border-radius: calc( @i * 15px );
+    }
 
     &@{i} { //& C'est this mais en l'utilisant que pour des noms pas des propriétés de ce que j'ai vu
       //@{} c'est concaténation avec une variable
       height: @height;
-      padding: calc(( @height - (@height/2))/2 ) 0;
+      padding: calc(( @height - (@height/2))/2 );
       .bgc(extract( @colors, @i ));
       .fs( @i );
 
@@ -59,7 +79,88 @@ html {
     }
     .create-container-and-children( @i + 1 );
   }
-
   .create-container-and-children();
 }
+
+// MARK: Section colored leafs
+
+.tree-section {
+  margin: 0 auto;
+  width: min-content;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.colors(@color, @bg-color) {
+  .c(@color);
+  .bgc(@bg-color);
+}
+
+.tree-container {
+  padding: 10px 10px 0;
+  width: max-content;
+}
+
+.tree-container-top-bottom {
+  border-radius: 10px;
+}
+
+.tree {
+  width: 50px;
+  height: 50px;
+}
+
+.create-trees-splitter(@color1, @color2) {
+  height: 25px;
+  .bgc(@color1, @color2);
+}
+
+@colors: #38C9C0, #4D4DC9;
+@colors-comp: #C97D57, #C9AD2E;
+
+.create-tree-colors( @i: 1 ) when (@i <= 2) {
+   .tree-colors@{i}1 {
+    .bgc(extract(@colors-comp, @i));
+  }
+  .tree-colors@{i}2 {
+    .bgc(extract(@colors, @i));
+  }
+  .create-tree-colors( (@i + 1) );
+}
+.create-tree-colors();
+
+@degres: 0, 45, 90, 135, 180, 225, 270, 315;
+
+.create-tree-rotation() {
+  each(@degres, {
+    .rotate-@{value} {
+      transform: rotateZ(unit(@value, deg));
+    }
+  })
+}
+.create-tree-rotation();
+
+.tree-splitter {
+  height: 25px;
+}
+
+.tree-splitter11 {
+  .bgc(extract(@colors-comp, 1), extract(@colors, 1));
+}
+.tree-splitter12 {
+  .bgc(extract(@colors, 1), extract(@colors-comp, 2));
+}
+.tree-splitter21 {
+  .bgc(extract(@colors-comp, 2), extract(@colors, 2));
+}
+
+
+.pb( @padding ) {
+  .pb-@{padding} {
+    padding-bottom: unit(@padding, px);
+  }
+}
+
+.pb(5);
+
 
